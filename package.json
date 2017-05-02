@@ -1,0 +1,35 @@
+{
+  "name": "aws-cognito-authorization",
+  "version": "0.0.1",
+  "description": "AWS Cognito Authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iSkore/aws-cognito-authorization.git"
+  },
+  "keywords": [
+    "AWS",
+    "Cognito",
+    "Authentication",
+    "getCredentialsForIdentity",
+    "STS"
+  ],
+  "author": "Parellin Technology LLC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iSkore/aws-cognito-authorization/issues"
+  },
+  "homepage": "https://github.com/iSkore/aws-cognito-authorization#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "mocha": "^3.3.0",
+    "mocha-logger": "^1.0.5"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.48.0"
+  }
+}
