@@ -1,6 +1,6 @@
 {
   "name": "aws-cognito-authorization",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "AWS Cognito Authentication",
   "main": "index.js",
   "scripts": {
