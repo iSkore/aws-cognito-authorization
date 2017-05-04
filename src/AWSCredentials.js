@@ -10,35 +10,43 @@ const
 class AWSCredentials
 {
     /**
-     * @param creds
-     * @type {!object}
-     * @desc <code>creds</code> is the object used to construct the <code>AWS.CognitoIdentity</code> client
-     * @property {!string} region - AWS Region of operation
-     * @property {?string} accessKeyId - AWS Access Key
-     * @property {?string} secretAccessKey - AWS Secret Key
      * @param options
      * @type {!object}
      * @desc <code>options</code> required for communication with <a href="https://aws.amazon.com/cognito/">AWS Cognito</a> Identity Pool
      * @property {!string} IdentityPoolId - "{region}:{IdentityPoolId UUID}"
      * @property {!string} DeveloperName - "com.developer.name" for Developer provider name
      * @property {number} TokenDuration - Amount of time the session token should last
+     * @property {!string} region - AWS Region of operation
+     * @property {?string} accessKeyId - AWS Access Key
+     * @property {?string} secretAccessKey - AWS Secret Key
+     * @property {?profile} profile - AWS Local Profile
      */
-    constructor( creds, options )
+    constructor( options )
     {
         const
-            required = [ 'IdentityPoolId', 'DeveloperName' ],
+            required = [ 'IdentityPoolId', 'DeveloperName', 'region' ],
             missing  = this.isMissingProperty( options, required ),
             isNull   = this.isNullProperty( options, required );
 
         if( missing || isNull )
             throw `Argument Error - Missing or Empty Property: ${missing || isNull}`;
 
-        this.COG = new AWS.CognitoIdentity( creds );
-
         this.IdentityPoolId = options.IdentityPoolId;
         this.DeveloperName  = options.DeveloperName;
         this.TokenDuration  = options.TokenDuration || 86400;
         this.Federation     = options.Federation || 'cognito-identity.amazonaws.com';
+
+        delete options.IdentityPoolId;
+        delete options.DeveloperName;
+        delete options.TokenDuration;
+        delete options.Federation;
+
+        if( options.hasOwnProperty( 'profile' ) ) {
+            options.params = { profile: options.profile };
+            delete options.profile;
+        }
+
+        this.COG = new AWS.CognitoIdentity( options );
 
         this.init();
     }
@@ -86,14 +94,6 @@ class AWSCredentials
                 if( !obj[ properties[ i ] ] )
                     isNullProperty = properties[ i ];
         return isNullProperty;
-    }
-
-    removeProperties( obj, properties )
-    {
-        let i = 0;
-        for( ; i < properties.length; i++ )
-            delete obj[ properties[ i ] ];
-        return obj;
     }
 
     /**

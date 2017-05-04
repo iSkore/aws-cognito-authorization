@@ -1,12 +1,8 @@
 {
-    "credentials": {
-        "region": "<region>",
-        "accessKeyId": "<accessKey>",
-        "secretAccessKey": "<secretKey>"
-    },
-    "options": {
-        "IdentityPoolId": "<identityPoolId>",
-        "DeveloperName": "<developerName>",
-        "TokenDuration": 86400
-    }
+    "region": "<region>",
+    "accessKeyId": "<accessKey>",
+    "secretAccessKey": "<secretKey>"
+    "IdentityPoolId": "<identityPoolId>",
+    "DeveloperName": "<developerName>",
+    "TokenDuration": 86400
 }
