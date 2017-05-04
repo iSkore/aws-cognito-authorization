@@ -4,7 +4,8 @@
   "description": "AWS Cognito Authentication",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+      "docs": "jsdoc -c ./conf.json ./src/AWSCredentials.js ./README.md"
   },
   "repository": {
     "type": "git",
