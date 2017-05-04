@@ -1,3 +1,6 @@
+# aws things
+_config.*
+
 # code coverage
 coverage
 lib-cov

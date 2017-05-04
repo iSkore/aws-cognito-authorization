@@ -1,7 +1,7 @@
 {
     "region": "<region>",
     "accessKeyId": "<accessKey>",
-    "secretAccessKey": "<secretKey>"
+    "secretAccessKey": "<secretKey>",
     "IdentityPoolId": "<identityPoolId>",
     "DeveloperName": "<developerName>",
     "TokenDuration": 86400
