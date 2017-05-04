@@ -11,8 +11,8 @@ chai.use( chaiAsPromised );
 
 const
     AWSCredentials = require( '../index' ),
-    opts           = require( '../config.json' ),
-    Credentials    = new AWSCredentials( opts );
+    config         = require( '../config.json' ),
+    Credentials    = new AWSCredentials( config.credentials, config.options );
 
 describe( 'AWSCredentials testing:', function() {
     const results = {};

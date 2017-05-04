@@ -1,8 +1,8 @@
 'use strict';
 
 const
-    AWS                    = require( 'aws-sdk' ),
-    https                  = require( 'https' );
+    AWS   = require( 'aws-sdk' ),
+    https = require( 'https' );
 
 /**
  * @class AWSCredentials
@@ -10,30 +10,28 @@ const
 class AWSCredentials
 {
     /**
+     * @param creds
+     * @type {!object}
+     * @desc <code>creds</code> is the object used to construct the <code>AWS.CognitoIdentity</code> client
+     * @property {!string} region - AWS Region of operation
+     * @property {?string} accessKeyId - AWS Access Key
+     * @property {?string} secretAccessKey - AWS Secret Key
      * @param options
      * @type {!object}
-     * @desc <code>options<code> required for communication with <a href="https://aws.amazon.com/cognito/">AWS Cognito</a>
-     * @property {!string} region - AWS Region of operation
+     * @desc <code>options</code> required for communication with <a href="https://aws.amazon.com/cognito/">AWS Cognito</a> Identity Pool
      * @property {!string} IdentityPoolId - "{region}:{IdentityPoolId UUID}"
      * @property {!string} DeveloperName - "com.developer.name" for Developer provider name
      * @property {number} TokenDuration - Amount of time the session token should last
      */
-    constructor( options )
+    constructor( creds, options )
     {
         const
             required = [ 'IdentityPoolId', 'DeveloperName' ],
             missing  = this.isMissingProperty( options, required ),
-            isNull   = this.isNullProperty( options, required ),
-            creds    = { params: {} };
+            isNull   = this.isNullProperty( options, required );
 
         if( missing || isNull )
             throw `Argument Error - Missing or Empty Property: ${missing || isNull}`;
-
-        if( options.hasOwnProperty( 'profile' ) )
-            creds.params.profile = options.profile;
-
-        if( options.hasOwnProperty( 'region' ) )
-            creds.region  = options.region;
 
         this.COG = new AWS.CognitoIdentity( creds );
 
