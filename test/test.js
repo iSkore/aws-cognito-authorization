@@ -10,19 +10,14 @@ const
 chai.use( chaiAsPromised );
 
 const
-    AWSCognitoAuthorization = require( '../index' ),
-    opts                    = {
-        region: 'us-east-1',
-        IdentityPoolId: 'us-east-1:8ef40589-1600-4050-bc19-b20eb273f0e6',
-        DeveloperName: 'com.planet3.pam',
-        TokenDuration: 3600
-    },
-    Credentials             = new AWSCognitoAuthorization( opts );
+    AWSCredentials = require( '../index' ),
+    opts           = require( '../config.json' ),
+    Credentials    = new AWSCredentials( opts );
 
-describe( 'AWSCognitoAuthorization testing:', function() {
+describe( 'AWSCredentials testing:', function() {
     const results = {};
 
-    mlog.pending( 'AWSCognitoAuthorization testing:' );
+    mlog.pending( 'AWSCredentials testing:' );
 
     it( 'should construct an object', function( done ) {
         mlog.pending( 'should construct an object' );
@@ -69,7 +64,7 @@ describe( 'AWSCognitoAuthorization testing:', function() {
     it( 'should provide AWSCognitoIdentity', function( done ) {
         mlog.pending( 'should provide AWSCognitoIdentity' );
 
-        expect( Credentials.GetOpenIdTokenForDeveloperIdentity( 'nick@exploreplanet3.com' ) )
+        expect( Credentials.AWSIdentityProvider( 'nick@exploreplanet3.com' ) )
             .to.eventually.be.fulfilled
             .then( r => {
                 results.AWSCognitoIdentity = r;
@@ -82,10 +77,10 @@ describe( 'AWSCognitoAuthorization testing:', function() {
             } );
     } );
 
-    it( 'should provide AWSCredentials', function( done ) {
-        mlog.pending( 'should provide AWSCredentials' );
+    it( 'should provide AWSCognitoCredentials', function( done ) {
+        mlog.pending( 'should provide AWSCognitoCredentials' );
 
-        expect( Credentials.GetCredentials( results.AWSCognitoIdentity ) )
+        expect( Credentials.AWSCredentialsProvider( results.AWSCognitoIdentity ) )
             .to.eventually.be.fulfilled
             .then( r => {
                 results.AWSCredentials = r;
@@ -98,14 +93,14 @@ describe( 'AWSCognitoAuthorization testing:', function() {
             } );
     } );
 
-    it( 'should provide both AWSCognitoIdentity and AWSCredentials', function( done ) {
-        mlog.pending( 'should provide AWSCognitoIdentity and AWSCredentials (AWSFullCreds)' );
+    it( 'should provide both AWSCognitoIdentity and AWSCognitoCredentials', function( done ) {
+        mlog.pending( 'should provide AWSCognitoIdentity and AWSCognitoCredentials (AWSCredentials)' );
 
         expect( Credentials.GetAuthorization( 'nick@exploreplanet3.com' ) )
             .to.eventually.be.fulfilled
             .then( r => {
                 results.AWSFullCreds = r;
-                mlog.success( 'AWSFullCreds:', JSON.stringify( r, null, 4 ) );
+                mlog.success( 'AWSCredentials:', JSON.stringify( r, null, 4 ) );
                 done();
             } )
             .catch( e => {

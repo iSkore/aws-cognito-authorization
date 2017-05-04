@@ -1,0 +1,6 @@
+{
+    "region": "<region>",
+    "IdentityPoolId": "<region>:<IdentityPoolId>",
+    "DeveloperName": "<developer name>",
+    "TokenDuration": 86400
+}
