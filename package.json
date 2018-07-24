@@ -1,36 +1,45 @@
 {
-  "name": "aws-cognito-authorization",
-  "version": "0.1.4",
-  "description": "AWS Cognito Authentication",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha",
-    "docs": "jsdoc -c ./conf.json ./src/AWSCredentials.js ./README.md"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/iSkore/aws-cognito-authorization.git"
-  },
-  "keywords": [
-    "AWS",
-    "Cognito",
-    "Authentication",
-    "getCredentialsForIdentity",
-    "STS"
-  ],
-  "author": "Parellin Technology LLC",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/iSkore/aws-cognito-authorization/issues"
-  },
-  "homepage": "https://github.com/iSkore/aws-cognito-authorization#readme",
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "mocha": "^3.3.0",
-    "mocha-logger": "^1.0.5"
-  },
-  "dependencies": {
-    "aws-sdk": "^2.48.0"
-  }
+	"name": "aws-cognito-authorization",
+	"version": "0.1.4",
+	"description": "AWS Cognito Authentication",
+	"main": "index.js",
+	"scripts": {
+		"cleanInstall": "rm -rf node_modules/ package-lock.json && npm i",
+		"dev": "node index.js",
+		"docs": "jsdoc -c tools/jsdocs.js -r",
+		"lint": "eslint .",
+		"preversion": "npm test",
+		"test": "mocha --trace-warnings"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/iSkore/aws-cognito-authorization.git"
+	},
+	"keywords": [
+		"AWS",
+		"Cognito",
+		"Authentication",
+		"getCredentialsForIdentity",
+		"STS"
+	],
+	"author": "Parellin Technologies LLC <nick@parellin.com> (https://parellin.com)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/iSkore/aws-cognito-authorization/issues"
+	},
+	"homepage": "https://github.com/iSkore/aws-cognito-authorization#readme",
+	"dependencies": {
+		"aws-sdk": "^2.229.1"
+	},
+	"devDependencies": {
+		"chai": "^3.5.0",
+		"chai-as-promised": "^6.0.0",
+		"eslint": "^4.19.1",
+		"jsdoc-to-markdown": "^4.0.1",
+		"mocha": "^3.5.3",
+		"mocha-logger": "^1.0.5"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org"
+	}
 }

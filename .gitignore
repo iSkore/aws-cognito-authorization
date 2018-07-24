@@ -1,6 +1,3 @@
-# aws things
-_config.*
-
 # code coverage
 coverage
 lib-cov
@@ -47,7 +44,6 @@ jspm_packages
 # Yeoman/bow/&c.
 bower_components/
 build/
-dist/
 
 # Linux ignores
 *~
@@ -492,4 +488,5 @@ paket-files/
 # JetBrains Rider
 *.sln.iml
 
-
+archive.tar*
+dist/
